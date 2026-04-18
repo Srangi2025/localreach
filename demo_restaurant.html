@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bella Vista Bistro — State College, PA</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{
+    --gold:#c9a84c;
+    --dark:#1a1a1a;
+    --cream:#faf7f2;
+    --text:#333;
+    --muted:#777;
+  }
+  body{font-family:'Inter',sans-serif;color:var(--text);background:#fff}
+
+  /* NAV */
+  nav{
+    position:fixed;top:0;width:100%;z-index:100;
+    background:rgba(26,26,26,0.95);backdrop-filter:blur(10px);
+    padding:0 5%;display:flex;align-items:center;justify-content:space-between;height:70px;
+  }
+  .logo{font-family:'Playfair Display',serif;color:#fff;font-size:22px;letter-spacing:1px}
+  .logo span{color:var(--gold)}
+  .nav-links{display:flex;gap:32px;list-style:none}
+  .nav-links a{color:rgba(255,255,255,0.8);text-decoration:none;font-size:14px;letter-spacing:0.5px;transition:color 0.2s}
+  .nav-links a:hover{color:var(--gold)}
+  .nav-cta{background:var(--gold);color:#fff;padding:10px 22px;border-radius:4px;text-decoration:none;font-size:14px;font-weight:500;transition:opacity 0.2s}
+  .nav-cta:hover{opacity:0.85}
+
+  /* HERO */
+  .hero{
+    height:100vh;
+    background:linear-gradient(rgba(0,0,0,0.55),rgba(0,0,0,0.55)),
+      url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1600&q=80') center/cover;
+    display:flex;align-items:center;justify-content:center;text-align:center;
+    padding:0 20px;
+  }
+  .hero-content{color:#fff;max-width:700px}
+  .hero-tag{
+    display:inline-block;
+    border:1px solid var(--gold);color:var(--gold);
+    padding:6px 18px;border-radius:20px;font-size:12px;letter-spacing:2px;text-transform:uppercase;
+    margin-bottom:24px;
+  }
+  .hero h1{font-family:'Playfair Display',serif;font-size:clamp(42px,7vw,72px);line-height:1.1;margin-bottom:20px}
+  .hero p{font-size:18px;opacity:0.85;margin-bottom:36px;line-height:1.7}
+  .hero-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+  .btn-primary{background:var(--gold);color:#fff;padding:15px 34px;border-radius:4px;text-decoration:none;font-weight:500;font-size:15px;transition:opacity 0.2s}
+  .btn-primary:hover{opacity:0.85}
+  .btn-outline{border:2px solid #fff;color:#fff;padding:13px 32px;border-radius:4px;text-decoration:none;font-weight:500;font-size:15px;transition:all 0.2s}
+  .btn-outline:hover{background:#fff;color:var(--dark)}
+
+  /* ABOUT */
+  .about{padding:100px 5%;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;max-width:1200px;margin:0 auto}
+  .about-img{position:relative}
+  .about-img img{width:100%;border-radius:8px;object-fit:cover;height:480px}
+  .about-badge{
+    position:absolute;bottom:-24px;right:-24px;
+    background:var(--gold);color:#fff;
+    width:120px;height:120px;border-radius:50%;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    font-family:'Playfair Display',serif;text-align:center;
+    box-shadow:0 8px 32px rgba(201,168,76,0.4);
+  }
+  .about-badge .num{font-size:32px;font-weight:700;line-height:1}
+  .about-badge .sub{font-size:11px;opacity:0.9;margin-top:4px}
+  .about-text .tag{color:var(--gold);font-size:12px;letter-spacing:2px;text-transform:uppercase;font-weight:500;margin-bottom:12px}
+  .about-text h2{font-family:'Playfair Display',serif;font-size:38px;line-height:1.2;margin-bottom:20px}
+  .about-text p{color:var(--muted);line-height:1.8;margin-bottom:16px;font-size:15px}
+  .about-stats{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:36px}
+  .stat{text-align:center;padding:20px;background:var(--cream);border-radius:8px}
+  .stat .num{font-family:'Playfair Display',serif;font-size:32px;color:var(--gold);font-weight:700}
+  .stat .label{font-size:13px;color:var(--muted);margin-top:4px}
+
+  /* MENU SECTION */
+  .menu-section{background:var(--cream);padding:100px 5%}
+  .section-header{text-align:center;margin-bottom:60px}
+  .section-header .tag{color:var(--gold);font-size:12px;letter-spacing:2px;text-transform:uppercase;font-weight:500;margin-bottom:12px}
+  .section-header h2{font-family:'Playfair Display',serif;font-size:42px;margin-bottom:16px}
+  .section-header p{color:var(--muted);max-width:500px;margin:0 auto;line-height:1.7}
+  .menu-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:28px;max-width:1200px;margin:0 auto}
+  .menu-card{background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,0.06);transition:transform 0.2s,box-shadow 0.2s}
+  .menu-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,0.1)}
+  .menu-card img{width:100%;height:200px;object-fit:cover}
+  .menu-card-body{padding:20px}
+  .menu-card-body h3{font-family:'Playfair Display',serif;font-size:20px;margin-bottom:8px}
+  .menu-card-body p{color:var(--muted);font-size:14px;line-height:1.6;margin-bottom:12px}
+  .menu-price{color:var(--gold);font-weight:600;font-size:16px}
+
+  /* TESTIMONIALS */
+  .testimonials{padding:100px 5%;max-width:1200px;margin:0 auto}
+  .test-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:28px;margin-top:60px}
+  .test-card{background:var(--cream);border-radius:12px;padding:32px;position:relative}
+  .test-card::before{content:'"';font-family:'Playfair Display',serif;font-size:80px;color:var(--gold);opacity:0.2;position:absolute;top:10px;left:20px;line-height:1}
+  .test-card p{color:var(--muted);line-height:1.8;font-size:15px;margin-bottom:20px;position:relative}
+  .test-author{display:flex;align-items:center;gap:12px}
+  .test-avatar{width:44px;height:44px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:600;font-size:16px}
+  .test-name{font-weight:500;font-size:14px}
+  .test-role{font-size:12px;color:var(--muted)}
+  .stars{color:var(--gold);font-size:14px;margin-bottom:12px}
+
+  /* RESERVE */
+  .reserve{
+    background:linear-gradient(135deg,var(--dark) 0%,#2d2d2d 100%);
+    padding:100px 5%;text-align:center;color:#fff;
+  }
+  .reserve h2{font-family:'Playfair Display',serif;font-size:42px;margin-bottom:16px}
+  .reserve p{color:rgba(255,255,255,0.7);font-size:16px;margin-bottom:40px;max-width:500px;margin-left:auto;margin-right:auto;line-height:1.7}
+  .reserve-form{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;max-width:600px;margin:0 auto}
+  .reserve-form input,.reserve-form select{
+    flex:1;min-width:160px;
+    padding:14px 18px;border-radius:6px;border:1px solid rgba(255,255,255,0.15);
+    background:rgba(255,255,255,0.08);color:#fff;font-family:'Inter',sans-serif;font-size:14px;
+  }
+  .reserve-form input::placeholder{color:rgba(255,255,255,0.4)}
+  .reserve-form button{
+    background:var(--gold);color:#fff;border:none;
+    padding:14px 32px;border-radius:6px;font-family:'Inter',sans-serif;font-size:15px;font-weight:500;cursor:pointer;
+    transition:opacity 0.2s;
+  }
+  .reserve-form button:hover{opacity:0.85}
+
+  /* FOOTER */
+  footer{background:#111;color:rgba(255,255,255,0.5);padding:60px 5% 30px;text-align:center}
+  .footer-logo{font-family:'Playfair Display',serif;color:#fff;font-size:24px;margin-bottom:16px}
+  .footer-logo span{color:var(--gold)}
+  footer p{font-size:13px;line-height:1.8;margin-bottom:8px}
+  .footer-built{margin-top:30px;padding-top:20px;border-top:1px solid rgba(255,255,255,0.08);font-size:12px;color:rgba(255,255,255,0.3)}
+  .footer-built a{color:var(--gold);text-decoration:none}
+
+  /* DEMO BANNER */
+  .demo-banner{
+    background:var(--gold);color:#fff;text-align:center;
+    padding:12px 20px;font-size:13px;font-weight:500;
+    position:sticky;top:70px;z-index:99;
+  }
+  .demo-banner a{color:#fff;font-weight:700;text-decoration:underline}
+
+  @media(max-width:768px){
+    .about{grid-template-columns:1fr;gap:40px}
+    .about-badge{display:none}
+    .nav-links,.nav-cta{display:none}
+  }
+</style>
+</head>
+<body>
+
+<div class="demo-banner">
+  🎓 This is a <strong>free demo website</strong> built by a Penn State student via <a href="#">Buziwork</a>. We build sites like this for local businesses — <a href="mailto:buziwork@gmail.com">get yours today</a>.
+</div>
+
+<nav>
+  <div class="logo">Bella Vista <span>Bistro</span></div>
+  <ul class="nav-links">
+    <li><a href="#">Menu</a></li>
+    <li><a href="#">About</a></li>
+    <li><a href="#">Gallery</a></li>
+    <li><a href="#">Contact</a></li>
+  </ul>
+  <a href="#reserve" class="nav-cta">Reserve a Table</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-tag">State College, PA</div>
+    <h1>Where Every Meal Tells a Story</h1>
+    <p>Fresh ingredients, bold flavors, and warm hospitality in the heart of downtown State College.</p>
+    <div class="hero-btns">
+      <a href="#reserve" class="btn-primary">Reserve a Table</a>
+      <a href="#menu" class="btn-outline">View Menu</a>
+    </div>
+  </div>
+</section>
+
+<section class="about">
+  <div class="about-img">
+    <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&q=80" alt="Restaurant interior">
+    <div class="about-badge">
+      <span class="num">12</span>
+      <span class="sub">Years Serving State College</span>
+    </div>
+  </div>
+  <div class="about-text">
+    <div class="tag">Our Story</div>
+    <h2>A Family Tradition Since 2012</h2>
+    <p>Bella Vista Bistro was born from a simple belief — that great food brings people together. We source our ingredients from local farms within 50 miles of State College and craft every dish by hand.</p>
+    <p>Whether you're celebrating a special occasion or grabbing lunch between classes, we make every visit memorable.</p>
+    <div class="about-stats">
+      <div class="stat"><div class="num">4.9★</div><div class="label">Google Rating</div></div>
+      <div class="stat"><div class="num">340+</div><div class="label">5-Star Reviews</div></div>
+      <div class="stat"><div class="num">100%</div><div class="label">Local Ingredients</div></div>
+      <div class="stat"><div class="num">24</div><div class="label">Menu Items</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="menu-section" id="menu">
+  <div class="section-header">
+    <div class="tag">Our Menu</div>
+    <h2>Crafted with Passion</h2>
+    <p>Every dish is made fresh daily using locally sourced ingredients from Central Pennsylvania farms.</p>
+  </div>
+  <div class="menu-grid">
+    <div class="menu-card">
+      <img src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=600&q=80" alt="Seasonal salad">
+      <div class="menu-card-body">
+        <h3>Harvest Salad</h3>
+        <p>Mixed greens, candied walnuts, dried cranberries, goat cheese with honey vinaigrette.</p>
+        <div class="menu-price">$14</div>
+      </div>
+    </div>
+    <div class="menu-card">
+      <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=600&q=80" alt="Wood fired pizza">
+      <div class="menu-card-body">
+        <h3>Wood-Fired Margherita</h3>
+        <p>San Marzano tomatoes, fresh mozzarella, basil, extra virgin olive oil on hand-stretched dough.</p>
+        <div class="menu-price">$18</div>
+      </div>
+    </div>
+    <div class="menu-card">
+      <img src="https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=600&q=80" alt="Pasta dish">
+      <div class="menu-card-body">
+        <h3>Truffle Pasta</h3>
+        <p>House-made fettuccine, black truffle, parmesan, roasted garlic butter sauce.</p>
+        <div class="menu-price">$22</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="testimonials">
+  <div class="section-header">
+    <div class="tag">Reviews</div>
+    <h2>What Our Guests Say</h2>
+  </div>
+  <div class="test-grid">
+    <div class="test-card">
+      <div class="stars">★★★★★</div>
+      <p>Hands down the best restaurant in State College. The pasta is incredible and the staff makes you feel like family. We come here every Friday night.</p>
+      <div class="test-author">
+        <div class="test-avatar">S</div>
+        <div><div class="test-name">Sarah M.</div><div class="test-role">State College Resident</div></div>
+      </div>
+    </div>
+    <div class="test-card">
+      <div class="stars">★★★★★</div>
+      <p>Took my parents here when they visited for Parents Weekend. They're still talking about the truffle pasta. Absolutely amazing experience from start to finish.</p>
+      <div class="test-author">
+        <div class="test-avatar">J</div>
+        <div><div class="test-name">Jake T.</div><div class="test-role">Penn State Student</div></div>
+      </div>
+    </div>
+    <div class="test-card">
+      <div class="stars">★★★★★</div>
+      <p>We host our team dinners here every month. The private dining room is perfect and the food is consistently excellent. Highly recommend for any occasion.</p>
+      <div class="test-author">
+        <div class="test-avatar">R</div>
+        <div><div class="test-name">Rachel K.</div><div class="test-role">Local Business Owner</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="reserve" id="reserve">
+  <h2>Reserve Your Table</h2>
+  <p>Book online in seconds. We'll confirm your reservation within the hour.</p>
+  <div class="reserve-form">
+    <input type="text" placeholder="Your name">
+    <input type="tel" placeholder="Phone number">
+    <select>
+      <option>2 guests</option>
+      <option>3 guests</option>
+      <option>4 guests</option>
+      <option>5+ guests</option>
+    </select>
+    <button>Book Now</button>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">Bella Vista <span>Bistro</span></div>
+  <p>123 College Avenue, State College, PA 16801</p>
+  <p>(814) 555-0100 · bellavistabistro@email.com</p>
+  <p>Mon–Thu 11am–10pm · Fri–Sat 11am–11pm · Sun 12pm–9pm</p>
+  <div class="footer-built">
+    Website built by <a href="#">Buziwork</a> — Penn State student web development.
+    Want a site like this? <a href="mailto:buziwork@gmail.com">Contact us</a>.
+  </div>
+</footer>
+
+</body>
+</html>

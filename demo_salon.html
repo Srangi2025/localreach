@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Luxe Hair Studio — State College, PA</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{
+    --blush:#e8c4b8;
+    --rose:#c4816a;
+    --dark:#1c1c1c;
+    --cream:#fdf8f5;
+    --text:#2d2d2d;
+    --muted:#888;
+  }
+  body{font-family:'DM Sans',sans-serif;color:var(--text);background:#fff}
+
+  /* DEMO BANNER */
+  .demo-banner{
+    background:var(--rose);color:#fff;text-align:center;
+    padding:10px 20px;font-size:13px;
+  }
+  .demo-banner a{color:#fff;font-weight:600;text-decoration:underline}
+
+  /* NAV */
+  nav{
+    padding:0 6%;display:flex;align-items:center;justify-content:space-between;height:76px;
+    border-bottom:1px solid rgba(0,0,0,0.06);position:sticky;top:0;background:#fff;z-index:100;
+  }
+  .logo{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:600;letter-spacing:1px;color:var(--dark)}
+  .logo em{color:var(--rose);font-style:italic}
+  .nav-links{display:flex;gap:30px;list-style:none}
+  .nav-links a{color:var(--text);text-decoration:none;font-size:14px;font-weight:400;letter-spacing:0.3px;transition:color 0.2s}
+  .nav-links a:hover{color:var(--rose)}
+  .nav-cta{
+    background:var(--dark);color:#fff;
+    padding:11px 24px;border-radius:2px;text-decoration:none;
+    font-size:13px;font-weight:500;letter-spacing:0.5px;transition:background 0.2s;
+  }
+  .nav-cta:hover{background:var(--rose)}
+
+  /* HERO */
+  .hero{display:grid;grid-template-columns:1fr 1fr;min-height:90vh}
+  .hero-left{
+    background:var(--cream);
+    display:flex;flex-direction:column;justify-content:center;
+    padding:80px 6% 80px 8%;
+  }
+  .hero-left .eyebrow{
+    display:inline-block;font-size:11px;letter-spacing:3px;text-transform:uppercase;
+    color:var(--rose);font-weight:500;margin-bottom:20px;
+  }
+  .hero-left h1{
+    font-family:'Cormorant Garamond',serif;
+    font-size:clamp(44px,5vw,64px);font-weight:500;line-height:1.1;
+    margin-bottom:20px;color:var(--dark);
+  }
+  .hero-left h1 em{font-style:italic;color:var(--rose)}
+  .hero-left p{color:var(--muted);font-size:16px;line-height:1.8;margin-bottom:36px;max-width:400px}
+  .hero-btns{display:flex;gap:14px;flex-wrap:wrap}
+  .btn-dark{background:var(--dark);color:#fff;padding:14px 30px;border-radius:2px;text-decoration:none;font-size:14px;font-weight:500;letter-spacing:0.3px;transition:background 0.2s}
+  .btn-dark:hover{background:var(--rose)}
+  .btn-outline-dark{border:1.5px solid var(--dark);color:var(--dark);padding:12px 28px;border-radius:2px;text-decoration:none;font-size:14px;font-weight:500;transition:all 0.2s}
+  .btn-outline-dark:hover{background:var(--dark);color:#fff}
+  .hero-social{display:flex;gap:20px;margin-top:48px}
+  .social-num{text-align:center}
+  .social-num .num{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:600;color:var(--dark)}
+  .social-num .label{font-size:11px;color:var(--muted);letter-spacing:1px;text-transform:uppercase;margin-top:2px}
+  .social-divider{width:1px;background:rgba(0,0,0,0.1)}
+
+  .hero-right{position:relative;overflow:hidden}
+  .hero-right img{width:100%;height:100%;object-fit:cover}
+  .hero-badge{
+    position:absolute;bottom:32px;left:32px;
+    background:#fff;border-radius:8px;padding:16px 20px;
+    box-shadow:0 8px 32px rgba(0,0,0,0.12);
+    display:flex;align-items:center;gap:12px;
+  }
+  .badge-icon{width:40px;height:40px;background:var(--blush);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px}
+  .badge-text .top{font-weight:600;font-size:14px}
+  .badge-text .bottom{font-size:12px;color:var(--muted);margin-top:2px}
+
+  /* SERVICES */
+  .services{padding:90px 6%;background:var(--cream)}
+  .section-label{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--rose);font-weight:500;margin-bottom:12px}
+  .services-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:56px;flex-wrap:wrap;gap:20px}
+  .services-header h2{font-family:'Cormorant Garamond',serif;font-size:44px;font-weight:500;max-width:400px;line-height:1.2}
+  .services-header p{color:var(--muted);max-width:320px;font-size:14px;line-height:1.7}
+  .services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1px;background:rgba(0,0,0,0.08)}
+  .service-item{background:#fff;padding:36px 28px}
+  .service-item .icon{font-size:28px;margin-bottom:16px}
+  .service-item h3{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;margin-bottom:8px}
+  .service-item p{color:var(--muted);font-size:13px;line-height:1.7;margin-bottom:14px}
+  .service-price{font-size:14px;font-weight:500;color:var(--rose)}
+
+  /* GALLERY */
+  .gallery{padding:90px 6%}
+  .gallery-header{text-align:center;margin-bottom:48px}
+  .gallery-header h2{font-family:'Cormorant Garamond',serif;font-size:44px;font-weight:500;margin-bottom:10px}
+  .gallery-header p{color:var(--muted);font-size:14px}
+  .gallery-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    grid-template-rows:240px 240px;
+    gap:10px;
+  }
+  .gallery-item{overflow:hidden;border-radius:4px}
+  .gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s}
+  .gallery-item:hover img{transform:scale(1.04)}
+  .gallery-item.tall{grid-row:span 2}
+
+  /* TEAM */
+  .team{padding:90px 6%;background:var(--cream)}
+  .team-header{text-align:center;margin-bottom:56px}
+  .team-header h2{font-family:'Cormorant Garamond',serif;font-size:44px;font-weight:500;margin-bottom:10px}
+  .team-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:28px;max-width:1000px;margin:0 auto}
+  .team-card{text-align:center}
+  .team-card img{width:100%;height:300px;object-fit:cover;border-radius:4px;margin-bottom:16px;filter:grayscale(20%)}
+  .team-card h3{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;margin-bottom:4px}
+  .team-card .role{font-size:13px;color:var(--rose);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px}
+  .team-card p{font-size:13px;color:var(--muted);line-height:1.6}
+
+  /* TESTIMONIALS */
+  .testimonials{padding:90px 6%}
+  .test-header{text-align:center;margin-bottom:56px}
+  .test-header h2{font-family:'Cormorant Garamond',serif;font-size:44px;font-weight:500}
+  .test-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;max-width:1100px;margin:0 auto}
+  .test-card{border:1px solid rgba(0,0,0,0.08);border-radius:4px;padding:28px}
+  .test-stars{color:var(--rose);font-size:13px;margin-bottom:14px;letter-spacing:2px}
+  .test-card p{color:var(--muted);font-size:14px;line-height:1.8;margin-bottom:18px;font-style:italic}
+  .test-author{font-weight:500;font-size:14px}
+  .test-detail{font-size:12px;color:var(--muted);margin-top:2px}
+
+  /* BOOKING */
+  .booking{
+    background:var(--dark);padding:90px 6%;
+    display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;
+  }
+  .booking-text{color:#fff}
+  .booking-text .section-label{color:var(--blush)}
+  .booking-text h2{font-family:'Cormorant Garamond',serif;font-size:44px;font-weight:500;line-height:1.2;margin-bottom:16px}
+  .booking-text p{color:rgba(255,255,255,0.6);font-size:15px;line-height:1.8}
+  .booking-form{display:flex;flex-direction:column;gap:12px}
+  .booking-form input,.booking-form select{
+    padding:14px 18px;border-radius:2px;border:1px solid rgba(255,255,255,0.15);
+    background:rgba(255,255,255,0.06);color:#fff;font-family:'DM Sans',sans-serif;font-size:14px;
+  }
+  .booking-form input::placeholder{color:rgba(255,255,255,0.35)}
+  .booking-form select option{background:var(--dark)}
+  .booking-form button{
+    background:var(--rose);color:#fff;border:none;
+    padding:15px;border-radius:2px;font-family:'DM Sans',sans-serif;
+    font-size:15px;font-weight:500;cursor:pointer;transition:opacity 0.2s;
+    margin-top:4px;
+  }
+  .booking-form button:hover{opacity:0.85}
+
+  /* FOOTER */
+  footer{background:#111;color:rgba(255,255,255,0.45);padding:50px 6% 24px;text-align:center}
+  .footer-logo{font-family:'Cormorant Garamond',serif;color:#fff;font-size:26px;font-weight:600;margin-bottom:12px}
+  footer p{font-size:13px;line-height:1.8;margin-bottom:4px}
+  .footer-built{margin-top:28px;padding-top:20px;border-top:1px solid rgba(255,255,255,0.07);font-size:12px}
+  .footer-built a{color:var(--rose);text-decoration:none}
+
+  @media(max-width:900px){
+    .hero{grid-template-columns:1fr}
+    .hero-right{height:400px}
+    .gallery-grid{grid-template-columns:repeat(2,1fr);grid-template-rows:auto}
+    .gallery-item.tall{grid-row:span 1}
+    .booking{grid-template-columns:1fr}
+    .nav-links,.nav-cta{display:none}
+  }
+</style>
+</head>
+<body>
+
+<div class="demo-banner">
+  🎓 <strong>Demo site</strong> created by a Penn State student via <a href="#">Buziwork</a>. We build beautiful websites for local salons — <a href="mailto:buziwork@gmail.com">get yours today</a>.
+</div>
+
+<nav>
+  <div class="logo">Luxe <em>Hair</em> Studio</div>
+  <ul class="nav-links">
+    <li><a href="#">Services</a></li>
+    <li><a href="#">Gallery</a></li>
+    <li><a href="#">Team</a></li>
+    <li><a href="#">Reviews</a></li>
+  </ul>
+  <a href="#book" class="nav-cta">Book Appointment</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-left">
+    <span class="eyebrow">State College, PA</span>
+    <h1>Where Style<br>Meets <em>Confidence</em></h1>
+    <p>Expert cuts, color, and styling in a warm, welcoming environment. Serving State College and Penn State since 2015.</p>
+    <div class="hero-btns">
+      <a href="#book" class="btn-dark">Book Appointment</a>
+      <a href="#services" class="btn-outline-dark">View Services</a>
+    </div>
+    <div class="hero-social">
+      <div class="social-num"><div class="num">9+</div><div class="label">Years Open</div></div>
+      <div class="social-divider"></div>
+      <div class="social-num"><div class="num">4.9★</div><div class="label">Google</div></div>
+      <div class="social-divider"></div>
+      <div class="social-num"><div class="num">220+</div><div class="label">Reviews</div></div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=900&q=80" alt="Salon interior">
+    <div class="hero-badge">
+      <div class="badge-icon">✂️</div>
+      <div class="badge-text">
+        <div class="top">Online Booking Available</div>
+        <div class="bottom">Pick your time in seconds</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="services" id="services">
+  <div class="section-label">What We Offer</div>
+  <div class="services-header">
+    <h2>Services Crafted for You</h2>
+    <p>From everyday cuts to full color transformations — we specialize in making you feel your best.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-item">
+      <div class="icon">✂️</div>
+      <h3>Haircut & Style</h3>
+      <p>Precision cuts tailored to your face shape, lifestyle, and personal style.</p>
+      <div class="service-price">From $45</div>
+    </div>
+    <div class="service-item">
+      <div class="icon">🎨</div>
+      <h3>Color & Highlights</h3>
+      <p>Balayage, ombre, full color, highlights, and creative color by expert colorists.</p>
+      <div class="service-price">From $95</div>
+    </div>
+    <div class="service-item">
+      <div class="icon">✨</div>
+      <h3>Blowout & Styling</h3>
+      <p>Smoothing treatments, blowouts, updos, and special occasion styling.</p>
+      <div class="service-price">From $55</div>
+    </div>
+    <div class="service-item">
+      <div class="icon">💆</div>
+      <h3>Scalp Treatment</h3>
+      <p>Nourishing scalp massages and treatments for healthier, stronger hair.</p>
+      <div class="service-price">From $35</div>
+    </div>
+  </div>
+</section>
+
+<section class="gallery">
+  <div class="gallery-header">
+    <div class="section-label">Our Work</div>
+    <h2>The Luxe Look</h2>
+    <p>A glimpse of transformations from our studio</p>
+  </div>
+  <div class="gallery-grid">
+    <div class="gallery-item tall">
+      <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=600&q=80" alt="Hair color">
+    </div>
+    <div class="gallery-item">
+      <img src="https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?w=600&q=80" alt="Hair styling">
+    </div>
+    <div class="gallery-item">
+      <img src="https://images.unsplash.com/photo-1562322140-8baeececf3df?w=600&q=80" alt="Salon chair">
+    </div>
+    <div class="gallery-item">
+      <img src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?w=600&q=80" alt="Blowout">
+    </div>
+    <div class="gallery-item">
+      <img src="https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=600&q=80" alt="Color treatment">
+    </div>
+    <div class="gallery-item">
+      <img src="https://images.unsplash.com/photo-1634449571010-02389ed0f9b0?w=600&q=80" alt="Hair cut">
+    </div>
+  </div>
+</section>
+
+<section class="team">
+  <div class="team-header">
+    <div class="section-label">Meet the Team</div>
+    <h2>Your Stylists</h2>
+  </div>
+  <div class="team-grid">
+    <div class="team-card">
+      <img src="https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?w=500&q=80" alt="Stylist">
+      <h3>Jessica L.</h3>
+      <div class="role">Lead Colorist</div>
+      <p>10+ years specializing in balayage and creative color. Instagram-worthy results every time.</p>
+    </div>
+    <div class="team-card">
+      <img src="https://images.unsplash.com/photo-1537368910025-700350fe46c7?w=500&q=80" alt="Stylist">
+      <h3>Maria R.</h3>
+      <div class="role">Master Stylist</div>
+      <p>Precision cuts and blowouts. Certified in Brazilian Blowout and Keratin treatments.</p>
+    </div>
+    <div class="team-card">
+      <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=500&q=80" alt="Stylist">
+      <h3>Priya K.</h3>
+      <div class="role">Color Specialist</div>
+      <p>Expert in lived-in color and highlights. Penn State alum and State College local.</p>
+    </div>
+  </div>
+</section>
+
+<section class="testimonials">
+  <div class="test-header">
+    <div class="section-label">Reviews</div>
+    <h2>What Our Clients Say</h2>
+  </div>
+  <div class="test-grid">
+    <div class="test-card">
+      <div class="test-stars">★★★★★</div>
+      <p>"Jessica did my balayage and I'm absolutely obsessed. She listened to exactly what I wanted and delivered something even better than I imagined."</p>
+      <div class="test-author">Emma S.</div>
+      <div class="test-detail">Penn State Student · Google Review</div>
+    </div>
+    <div class="test-card">
+      <div class="test-stars">★★★★★</div>
+      <p>"I've been going to Luxe for 4 years and I won't go anywhere else. The vibe is relaxing, the stylists are talented, and they always make me feel like a priority."</p>
+      <div class="test-author">Lauren M.</div>
+      <div class="test-detail">State College Resident · Google Review</div>
+    </div>
+    <div class="test-card">
+      <div class="test-stars">★★★★★</div>
+      <p>"Moved to State College 6 months ago and was nervous about finding a new salon. So glad I found Luxe. Maria completely transformed my hair. Book with her!"</p>
+      <div class="test-author">Danielle K.</div>
+      <div class="test-detail">New to State College · Google Review</div>
+    </div>
+  </div>
+</section>
+
+<section class="booking" id="book">
+  <div class="booking-text">
+    <div class="section-label">Ready to Book?</div>
+    <h2>Your Best Hair Day Starts Here</h2>
+    <p>Book your appointment online in seconds. We'll send you a confirmation and reminder before your visit.</p>
+  </div>
+  <div class="booking-form">
+    <input type="text" placeholder="Your name">
+    <input type="tel" placeholder="Phone number">
+    <input type="email" placeholder="Email address">
+    <select>
+      <option>Select a service</option>
+      <option>Haircut & Style</option>
+      <option>Color & Highlights</option>
+      <option>Blowout & Styling</option>
+      <option>Scalp Treatment</option>
+    </select>
+    <button>Book My Appointment</button>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">Luxe Hair Studio</div>
+  <p>789 Calder Way, State College, PA 16801</p>
+  <p>(814) 555-0200 · luxehairstudio@email.com</p>
+  <p>Tue–Fri 9am–7pm · Sat 9am–5pm · Sun–Mon Closed</p>
+  <div class="footer-built">
+    Website built by <a href="#">Buziwork</a> — Penn State student web development.
+    Want a site like this for your business? <a href="mailto:buziwork@gmail.com">Contact us</a>.
+  </div>
+</footer>
+
+</body>
+</html>

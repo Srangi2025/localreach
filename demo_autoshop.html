@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Central Auto Care — State College, PA</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800&family=Barlow+Condensed:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{
+    --red:#e03030;
+    --dark:#111;
+    --gray:#1e1e1e;
+    --light:#f5f5f5;
+    --text:#333;
+    --muted:#666;
+  }
+  body{font-family:'Barlow',sans-serif;color:var(--text);background:#fff}
+
+  /* NAV */
+  nav{
+    background:var(--dark);padding:0 5%;
+    display:flex;align-items:center;justify-content:space-between;height:72px;
+    position:sticky;top:0;z-index:100;
+  }
+  .logo{font-family:'Barlow Condensed',sans-serif;color:#fff;font-size:24px;font-weight:800;letter-spacing:1px;text-transform:uppercase}
+  .logo span{color:var(--red)}
+  .nav-links{display:flex;gap:28px;list-style:none}
+  .nav-links a{color:rgba(255,255,255,0.75);text-decoration:none;font-size:14px;font-weight:500;text-transform:uppercase;letter-spacing:0.5px;transition:color 0.2s}
+  .nav-links a:hover{color:#fff}
+  .nav-phone{color:var(--red);font-weight:700;font-size:16px;text-decoration:none}
+
+  /* DEMO BANNER */
+  .demo-banner{
+    background:var(--red);color:#fff;text-align:center;
+    padding:10px 20px;font-size:13px;font-weight:500;
+  }
+  .demo-banner a{color:#fff;font-weight:700;text-decoration:underline}
+
+  /* HERO */
+  .hero{
+    background:linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)),
+      url('https://images.unsplash.com/photo-1530046339160-ce3e530c7d2f?w=1600&q=80') center/cover;
+    padding:100px 5%;color:#fff;
+  }
+  .hero-inner{max-width:700px}
+  .hero-tag{
+    display:inline-flex;align-items:center;gap:8px;
+    background:var(--red);color:#fff;
+    padding:6px 16px;border-radius:4px;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;
+    margin-bottom:24px;
+  }
+  .hero h1{font-family:'Barlow Condensed',sans-serif;font-size:clamp(46px,8vw,80px);font-weight:800;text-transform:uppercase;line-height:0.95;margin-bottom:20px}
+  .hero h1 span{color:var(--red)}
+  .hero p{font-size:17px;opacity:0.85;line-height:1.7;margin-bottom:36px;max-width:520px}
+  .hero-btns{display:flex;gap:14px;flex-wrap:wrap}
+  .btn-red{background:var(--red);color:#fff;padding:15px 32px;border-radius:4px;text-decoration:none;font-weight:700;font-size:15px;text-transform:uppercase;letter-spacing:0.5px;transition:opacity 0.2s}
+  .btn-red:hover{opacity:0.85}
+  .btn-white{border:2px solid #fff;color:#fff;padding:13px 30px;border-radius:4px;text-decoration:none;font-weight:700;font-size:15px;text-transform:uppercase;letter-spacing:0.5px;transition:all 0.2s}
+  .btn-white:hover{background:#fff;color:var(--dark)}
+  .hero-trust{display:flex;gap:32px;margin-top:48px;flex-wrap:wrap}
+  .trust-item{display:flex;align-items:center;gap:10px;font-size:14px;opacity:0.85}
+  .trust-icon{width:36px;height:36px;background:rgba(255,255,255,0.1);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px}
+
+  /* SERVICES */
+  .services{padding:80px 5%;background:var(--light)}
+  .services-header{text-align:center;margin-bottom:56px}
+  .tag{color:var(--red);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:2px;margin-bottom:10px}
+  .services-header h2{font-family:'Barlow Condensed',sans-serif;font-size:42px;font-weight:800;text-transform:uppercase}
+  .services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;max-width:1200px;margin:0 auto}
+  .service-card{background:#fff;border-radius:8px;padding:28px;border-bottom:3px solid transparent;transition:border-color 0.2s,transform 0.2s,box-shadow 0.2s;box-shadow:0 2px 12px rgba(0,0,0,0.06)}
+  .service-card:hover{border-bottom-color:var(--red);transform:translateY(-3px);box-shadow:0 8px 28px rgba(0,0,0,0.1)}
+  .service-icon{font-size:32px;margin-bottom:14px}
+  .service-card h3{font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:700;text-transform:uppercase;margin-bottom:8px}
+  .service-card p{color:var(--muted);font-size:14px;line-height:1.6}
+  .service-price{margin-top:14px;color:var(--red);font-weight:700;font-size:15px}
+
+  /* WHY US */
+  .why{padding:80px 5%;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;max-width:1200px;margin:0 auto}
+  .why-img img{width:100%;border-radius:8px;height:460px;object-fit:cover}
+  .why-text .tag{display:block;margin-bottom:10px}
+  .why-text h2{font-family:'Barlow Condensed',sans-serif;font-size:40px;font-weight:800;text-transform:uppercase;line-height:1.1;margin-bottom:20px}
+  .why-text p{color:var(--muted);line-height:1.8;font-size:15px;margin-bottom:20px}
+  .why-list{list-style:none;display:flex;flex-direction:column;gap:12px;margin-top:8px}
+  .why-list li{display:flex;align-items:flex-start;gap:12px;font-size:15px}
+  .why-list li::before{content:"✓";color:var(--red);font-weight:700;font-size:16px;flex-shrink:0;margin-top:1px}
+
+  /* STATS BAR */
+  .stats-bar{background:var(--dark);padding:50px 5%}
+  .stats-inner{display:grid;grid-template-columns:repeat(4,1fr);max-width:1000px;margin:0 auto;gap:20px}
+  .stat-item{text-align:center;color:#fff}
+  .stat-item .num{font-family:'Barlow Condensed',sans-serif;font-size:48px;font-weight:800;color:var(--red);line-height:1}
+  .stat-item .label{font-size:13px;color:rgba(255,255,255,0.6);margin-top:6px;text-transform:uppercase;letter-spacing:0.5px}
+
+  /* REVIEWS */
+  .reviews{padding:80px 5%;background:var(--light)}
+  .reviews-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;max-width:1200px;margin:56px auto 0}
+  .review-card{background:#fff;border-radius:8px;padding:24px;box-shadow:0 2px 12px rgba(0,0,0,0.06)}
+  .review-stars{color:#f5a623;font-size:14px;margin-bottom:10px}
+  .review-card p{color:var(--muted);font-size:14px;line-height:1.7;margin-bottom:16px}
+  .review-author{font-weight:600;font-size:14px}
+  .review-date{font-size:12px;color:var(--muted)}
+  .google-badge{display:flex;align-items:center;gap:6px;margin-top:10px;font-size:12px;color:var(--muted)}
+
+  /* BOOKING */
+  .booking{background:var(--red);padding:80px 5%;text-align:center;color:#fff}
+  .booking h2{font-family:'Barlow Condensed',sans-serif;font-size:48px;font-weight:800;text-transform:uppercase;margin-bottom:12px}
+  .booking p{font-size:16px;opacity:0.9;margin-bottom:36px;max-width:500px;margin-left:auto;margin-right:auto}
+  .booking-form{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;max-width:700px;margin:0 auto}
+  .booking-form input,.booking-form select{
+    flex:1;min-width:180px;
+    padding:14px 18px;border-radius:4px;border:none;
+    font-family:'Barlow',sans-serif;font-size:14px;color:var(--text);
+  }
+  .booking-form button{
+    background:var(--dark);color:#fff;border:none;
+    padding:14px 32px;border-radius:4px;font-family:'Barlow',sans-serif;font-size:15px;font-weight:700;
+    text-transform:uppercase;letter-spacing:0.5px;cursor:pointer;transition:opacity 0.2s;
+  }
+  .booking-form button:hover{opacity:0.8}
+
+  /* FOOTER */
+  footer{background:var(--dark);color:rgba(255,255,255,0.5);padding:50px 5% 24px}
+  .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;max-width:1000px;margin:0 auto 30px}
+  .footer-brand .logo{font-size:20px;margin-bottom:12px;display:block}
+  .footer-brand p{font-size:13px;line-height:1.7}
+  .footer-col h4{color:#fff;font-size:13px;text-transform:uppercase;letter-spacing:1px;margin-bottom:14px}
+  .footer-col p,.footer-col a{font-size:13px;color:rgba(255,255,255,0.5);text-decoration:none;display:block;margin-bottom:6px;line-height:1.6}
+  .footer-bottom{border-top:1px solid rgba(255,255,255,0.08);padding-top:20px;text-align:center;font-size:12px}
+  .footer-bottom a{color:var(--red);text-decoration:none}
+
+  @media(max-width:768px){
+    .why{grid-template-columns:1fr}
+    .stats-inner{grid-template-columns:repeat(2,1fr)}
+    .nav-links{display:none}
+    .footer-grid{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+
+<div class="demo-banner">
+  🎓 <strong>Demo site</strong> built by a Penn State student via <a href="#">Buziwork</a>. We build professional sites like this for local auto shops — <a href="mailto:buziwork@gmail.com">get yours free</a>.
+</div>
+
+<nav>
+  <div class="logo">Central <span>Auto</span> Care</div>
+  <ul class="nav-links">
+    <li><a href="#">Services</a></li>
+    <li><a href="#">About</a></li>
+    <li><a href="#">Reviews</a></li>
+    <li><a href="#">Book</a></li>
+  </ul>
+  <a href="tel:8145550100" class="nav-phone">(814) 555-0100</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-tag">⚙ State College, PA Since 2008</div>
+    <h1>Auto Repair<br>You Can <span>Trust</span></h1>
+    <p>Honest diagnostics, fair prices, and repairs done right the first time. Serving State College and Centre County for over 15 years.</p>
+    <div class="hero-btns">
+      <a href="#book" class="btn-red">Book an Appointment</a>
+      <a href="tel:8145550100" class="btn-white">Call Us Now</a>
+    </div>
+    <div class="hero-trust">
+      <div class="trust-item"><div class="trust-icon">✓</div>ASE Certified Technicians</div>
+      <div class="trust-item"><div class="trust-icon">★</div>4.9★ on Google (180+ Reviews)</div>
+      <div class="trust-item"><div class="trust-icon">⚡</div>Same-Day Service Available</div>
+    </div>
+  </div>
+</section>
+
+<section class="services">
+  <div class="services-header">
+    <div class="tag">What We Do</div>
+    <h2>Our Services</h2>
+  </div>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">🔧</div>
+      <h3>Oil Change</h3>
+      <p>Full synthetic, conventional, or high-mileage. In and out in under 30 minutes.</p>
+      <div class="service-price">From $39.99</div>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🛞</div>
+      <h3>Tires & Brakes</h3>
+      <p>Tire rotation, balancing, new tires, brake pads, rotors, and full brake inspections.</p>
+      <div class="service-price">Free Inspection</div>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🔍</div>
+      <h3>Diagnostics</h3>
+      <p>Check engine light, ABS, airbag, and all other warning light diagnostics.</p>
+      <div class="service-price">From $49.99</div>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">❄️</div>
+      <h3>AC & Heating</h3>
+      <p>AC recharge, heating system repair, blower motor, and climate control service.</p>
+      <div class="service-price">Free Check</div>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">⚙️</div>
+      <h3>Engine Repair</h3>
+      <p>Full engine diagnostics and repair, timing belts, head gaskets, and more.</p>
+      <div class="service-price">Free Estimate</div>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🚗</div>
+      <h3>PA State Inspection</h3>
+      <p>Official Pennsylvania state inspection and emissions testing. Walk-ins welcome.</p>
+      <div class="service-price">$79.99</div>
+    </div>
+  </div>
+</section>
+
+<section class="why">
+  <div class="why-img">
+    <img src="https://images.unsplash.com/photo-1625047509168-a7026f36de04?w=800&q=80" alt="Auto repair shop">
+  </div>
+  <div class="why-text">
+    <span class="tag">Why Choose Us</span>
+    <h2>Honest Repairs,<br>Fair Prices</h2>
+    <p>We've been serving State College and the surrounding Centre County area since 2008. Our ASE-certified technicians treat every car like their own.</p>
+    <ul class="why-list">
+      <li>Free written estimates before any work begins</li>
+      <li>ASE-certified mechanics with 10+ years experience</li>
+      <li>12-month / 12,000-mile warranty on all repairs</li>
+      <li>Loaner vehicles available for major repairs</li>
+      <li>Family owned and operated — no corporate upsells</li>
+      <li>Online booking available 24/7</li>
+    </ul>
+  </div>
+</section>
+
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat-item"><div class="num">15+</div><div class="label">Years in Business</div></div>
+    <div class="stat-item"><div class="num">8,400+</div><div class="label">Cars Serviced</div></div>
+    <div class="stat-item"><div class="num">4.9★</div><div class="label">Google Rating</div></div>
+    <div class="stat-item"><div class="num">180+</div><div class="label">5-Star Reviews</div></div>
+  </div>
+</div>
+
+<section class="reviews">
+  <div class="services-header">
+    <div class="tag">Customer Reviews</div>
+    <h2>What Our Customers Say</h2>
+  </div>
+  <div class="reviews-grid">
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <p>Been taking my cars here for 7 years. They're honest, fast, and never try to upsell you on things you don't need. Best shop in State College hands down.</p>
+      <div class="review-author">Mike D.</div>
+      <div class="google-badge">✓ Google Review</div>
+    </div>
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <p>As a Penn State student with a tight budget, I appreciate that they always explain what's necessary vs what can wait. Fixed my brakes same day. Highly recommend.</p>
+      <div class="review-author">Ashley P.</div>
+      <div class="google-badge">✓ Google Review</div>
+    </div>
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <p>Check engine light came on during a road trip through State College. They fit me in immediately, diagnosed the issue in 20 minutes, and had me back on the road. Lifesavers.</p>
+      <div class="review-author">Tom R.</div>
+      <div class="google-badge">✓ Google Review</div>
+    </div>
+  </div>
+</section>
+
+<section class="booking" id="book">
+  <h2>Book Your Appointment</h2>
+  <p>Schedule online in under 60 seconds. We'll confirm within the hour.</p>
+  <div class="booking-form">
+    <input type="text" placeholder="Your name">
+    <input type="tel" placeholder="Phone number">
+    <select>
+      <option>Select service</option>
+      <option>Oil Change</option>
+      <option>Brakes / Tires</option>
+      <option>Diagnostics</option>
+      <option>PA Inspection</option>
+      <option>Other</option>
+    </select>
+    <button>Book Now</button>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <span class="logo">Central <span style="color:#e03030">Auto</span> Care</span>
+      <p>Honest auto repair serving State College and Centre County since 2008. ASE-certified technicians, fair prices, and a warranty on every repair.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Hours</h4>
+      <p>Mon–Fri: 7:30am–6pm</p>
+      <p>Saturday: 8am–4pm</p>
+      <p>Sunday: Closed</p>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <a href="tel:8145550100">(814) 555-0100</a>
+      <p>456 Westerly Pkwy</p>
+      <p>State College, PA 16801</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    © 2024 Central Auto Care · Website by <a href="#">Buziwork</a> — Penn State student web development
+  </div>
+</footer>
+
+</body>
+</html>
